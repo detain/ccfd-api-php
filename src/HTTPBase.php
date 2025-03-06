@@ -213,7 +213,7 @@ abstract class HTTPBase
                 echo "Invalid input $key - perhaps misspelled field?\n";
                 return false;
             }
-            $this->queries[$key] = urlencode($this->filter_field($key, $val));
+            $this->queries[$key] = !is_null($val) ? urlencode($this->filter_field($key, $val)) : '';
         }
         $this->queries['clientAPI'] = self::API_VERSION;
     }
